@@ -36,3 +36,11 @@ In Godot are available the following languages:
 - VisualScript
 - .NET / C#
 - GDNative / C++
+
+### Signals
+
+Signals are Godot's version of the observer pattern. They allow a node to send out a message that other nodes can listen for and respond to.
+
+Signals are a way to decouple your game objects, which leads to better organized and more manageable code.
+
+Many of Godot's built-in node types provide signals you can use to detect events.
