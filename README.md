@@ -44,3 +44,94 @@ Signals are Godot's version of the observer pattern. They allow a node to send o
 Signals are a way to decouple your game objects, which leads to better organized and more manageable code.
 
 Many of Godot's built-in node types provide signals you can use to detect events.
+
+## GDScript Basic Concepts
+
+GDScript is a high level, dynamically typed programming language. It uses a syntax similar to **Python**.
+
+GDScript example:
+
+```python
+    # A file is a class!
+
+    # Inheritance
+
+    extends BaseClass
+
+    # (optional) class definition with a custom icon
+
+    class_name MyClass, "res://path/to/optional/icon.svg"
+
+    # Member Variables
+
+    var a = 5
+    var s = "Hello"
+    var arr = [1, 2, 3]
+    var dict = {"key": "value", 2:3}
+    var typed_var: int
+    var inferred_type := "String"
+
+    # Constants
+
+    const ANSWER = 42
+    const THE_NAME = "Charly"
+
+    # Enums
+
+    enum {UNIT_NEUTRAL, UNIT_ENEMY, UNIT_ALLY}
+    enum Named {THING_1, THING_2, ANOTHER_THING = -1}
+
+    # Built-in Vector Types
+
+    var v2 = Vector2(1, 2)
+    var v3 = Vector3(1, 2, 3)
+
+    # Function
+
+    func some_function(param1, param2):
+        var local_var = 5
+
+        if param1 < local_var:
+            print(param1)
+        elif param2 > 5:
+            print(param2)
+        else:
+            print("Fail!")
+
+        for i in range(20):
+            print(i)
+
+        while param2 != 0:
+            param2 -= 1
+
+        var local_var2 = param1 + 3
+        return local_var2
+
+    # Functions override functions with the same name on the base/parent class.
+    # If you still want to call them, use '.' (like 'super' in other languages).
+
+    func something(p1, p2):
+        .something(p1, p2)
+
+    # Inner Class
+
+    class Something:
+        var a = 10
+
+    # Constructor
+
+    func _init():
+        print("Constructed!")
+        var lv = Something.new()
+        print(lv.a)
+```
+
+Specific GDScript basics can be found [here](https://docs.godotengine.org/en/stable/getting_started/scripting/gdscript/gdscript_basics.html).
+
+### Exports
+
+The keyword ```export``` follwing a variable made the variable visible and editable in the Godot editor. This way, artists and game designers can modify values that later influecen how the program runs without open the code.
+
+### onready
+
+When using nodes, it's common to desire to keep references to parts of the scene in a variable. As scenes are only warranted to be configured when entering the active scene tree, the sub-nodes can only obtained when a call to ```Node._ready()``` is made. The ```onready``` keyword defeers initialization of a member variable until ```_ready``` is called.
