@@ -130,8 +130,23 @@ Specific GDScript basics can be found [here](https://docs.godotengine.org/en/sta
 
 ### Exports
 
-The keyword ```export``` follwing a variable made the variable visible and editable in the Godot editor. This way, artists and game designers can modify values that later influecen how the program runs without open the code.
+The keyword `export` follwing a variable made the variable visible and editable in the Godot editor. This way, artists and game designers can modify values that later influecen how the program runs without open the code.
 
 ### onready
 
-When using nodes, it's common to desire to keep references to parts of the scene in a variable. As scenes are only warranted to be configured when entering the active scene tree, the sub-nodes can only obtained when a call to ```Node._ready()``` is made. The ```onready``` keyword defeers initialization of a member variable until ```_ready``` is called.
+When using nodes, it's common to desire to keep references to parts of the scene in a variable. As scenes are only warranted to be configured when entering the active scene tree, the sub-nodes can only obtained when a call to `Node._ready()` is made. The `onready` keyword defeers initialization of a member variable until `_ready` is called.
+
+## Physics
+
+### KinematicBody2D
+
+#### Movement
+
+- `move_and_collide()`
+  - When you hit something, stop
+  - Can get collision information on whatever it hits
+  - Doesn't automatically use `delta`
+- `move_and_slide()`
+  - When you hit something, try and move along it
+  - Can detect floors, walls and ceilings
+  - Automatically uses `delta` when moving
