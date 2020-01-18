@@ -138,7 +138,23 @@ When using nodes, it's common to desire to keep references to parts of the scene
 
 ## Physics
 
-### KinematicBody2D
+In game development, you often need to know when two objetcs in the game intersect or come into contact. This is known as **collision detection**. When a collision is detected, you typically want something to happen. This is known as **collision response**.
+
+Godot offers a number of collision objects in 2D and 3D.
+
+### CollisionObject2D
+
+- **StaticBody2D**
+  Is not moved by the physics engine, it participates in collision detection, but does not move in response to the collision.
+  **When to use:** They are most often used for objects that are part of the environment or that do not need to have any dynamic behavior.
+
+- **RigidBody2D**
+  Implements simulated 2D physics. You do not control it directly, but you can apply forces to it (like gravity), the physics engine will calculate the resulting movement.
+  **When to use:** Great for objects that are moved by something else, not great for player control.
+
+- **KinematicBody2D**
+  Provides collision detection, but no physics. All movement and collision response must be implemented in code.
+  **When to use:** Player controller
 
 #### Movement
 
