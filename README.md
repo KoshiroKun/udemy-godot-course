@@ -45,6 +45,16 @@ Signals are a way to decouple your game objects, which leads to better organized
 
 Many of Godot's built-in node types provide signals you can use to detect events.
 
+### Groups
+
+Groups in Godot work like tags you might have come across in other software. A node can be added to as many groups as desired. With a Signal you send a message 1 on 1, on the other hand with Groups you broadcast a signal to all members of the group.
+
+```python
+get_tree().call_group("enemies", "player_was_discovered")
+```
+
+All enemies on the group `enemies` will be notified that the player has been discovered.
+
 ## GDScript Basic Concepts
 
 GDScript is a high level, dynamically typed programming language. It uses a syntax similar to **Python**.
@@ -136,6 +146,16 @@ The keyword `export` follwing a variable made the variable visible and editable 
 
 When using nodes, it's common to desire to keep references to parts of the scene in a variable. As scenes are only warranted to be configured when entering the active scene tree, the sub-nodes can only obtained when a call to `Node._ready()` is made. The `onready` keyword defeers initialization of a member variable until `_ready` is called.
 
+### yield
+
+Stops the function execution and returns the current suspended state to the calling function.
+
+You can algo use `yield` to wait for a function to finish, for example 1 frame:
+
+```python
+yield(get_tree(), "idle_frame")
+```
+
 ## Physics
 
 In game development, you often need to know when two objetcs in the game intersect or come into contact. This is known as **collision detection**. When a collision is detected, you typically want something to happen. This is known as **collision response**.
@@ -167,6 +187,24 @@ Godot offers a number of collision objects in 2D and 3D.
   - Can detect floors, walls and ceilings
   - Automatically uses `delta` when moving
 
-### Collision Layers
+#### Collision layers and masks
 
-### Collision Masks
+The collision layer system allows you to build up complex interactions between a variety of objetcs. Each `CollisionObject2D` has 20 different physics layers it can interact with.
+
+- **collision_layer**
+  This describes the layers that object appears **in**. By default, all bodies are on layer `1`.
+
+- **collision_mask**
+  This describes what layers the body will **scan** for collisions. If an object isn't in one of the mask layers, the body will ignore it. By default, all bodies scan layer `1`.
+
+It's useful to assign names to the layers you're using. Names can be assigned in **Project Settings -> Layer Names**.
+
+#### Area2D
+
+Area nodes provide **detection** and **influence**. They can detect when objects overlap and emit signal when bodies enter or exit.
+
+There are three main uses for `Area2D`:
+
+- Overriding physics parameters (such as gravity) in a given region.
+- Detecting when other bodies enter or exit a region or what bodies are currently in a region.
+- Checking other areas for overlap.

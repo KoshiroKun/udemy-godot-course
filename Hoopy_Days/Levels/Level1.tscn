@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://Hazards/SpikeTop.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=4]
+[ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/GameState.gd" type="Script" id=6]
 
 [node name="Level1" type="Node2D"]
+script = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
@@ -12,3 +17,24 @@ tile_set = ExtResource( 2 )
 collision_layer = 2
 format = 1
 tile_data = PoolIntArray( -655353, 6, 0, -655315, 7, 0, -524259, 7, 0, -393223, 6, 0, -327660, 7, 0, -327644, 7, 0, -196559, 3, 0, 5, 2, 0, 262137, 2, 0, 196635, 2, 0, 196650, 3, 0, 262159, 3, 0, 262195, 3, 0, 458757, 2, 0, 458771, 2, 0, 458788, 3, 0, 589878, 3, 0, 720889, 2, 0, 655373, 3, 0, 655387, 2, 0 )
+
+[node name="Hazards" type="Node" parent="."]
+
+[node name="SpikeTop" parent="Hazards" instance=ExtResource( 3 )]
+position = Vector2( 977.785, 617.322 )
+
+[node name="SpikeTop2" parent="Hazards" instance=ExtResource( 3 )]
+position = Vector2( 1536.71, 424.196 )
+
+[node name="SpikeTop3" parent="Hazards" instance=ExtResource( 3 )]
+position = Vector2( 2445.18, 424.196 )
+
+[node name="JumpPads" type="Node" parent="."]
+
+[node name="JumpPad" parent="JumpPads" instance=ExtResource( 5 )]
+position = Vector2( 1283.39, 418.184 )
+
+[node name="BGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -5.0
+autoplay = true
