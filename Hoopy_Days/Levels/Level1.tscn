@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,9 @@
 [ext_resource path="res://SFX/Summer_Park.ogg" type="AudioStream" id=4]
 [ext_resource path="res://Items/JumpPad.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/GameState.gd" type="Script" id=6]
+[ext_resource path="res://GUI/GUI.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Items/Coin.tscn" type="PackedScene" id=8]
+[ext_resource path="res://NPCs/Spikeman.tscn" type="PackedScene" id=9]
 
 [node name="Level1" type="Node2D"]
 script = ExtResource( 6 )
@@ -29,12 +32,57 @@ position = Vector2( 1536.71, 424.196 )
 [node name="SpikeTop3" parent="Hazards" instance=ExtResource( 3 )]
 position = Vector2( 2445.18, 424.196 )
 
+[node name="Coins" type="Node" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 666.931, 396.554 )
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 991.384, 194.672 )
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 659.721, 295.613 )
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 666.931, 205.487 )
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 367.714, 389.344 )
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 360.503, 288.403 )
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 364.108, 180.252 )
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 987.779, 86.5213 )
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 994.989, -43.2599 )
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 8 )]
+position = Vector2( 994.989, -162.226 )
+
 [node name="JumpPads" type="Node" parent="."]
 
 [node name="JumpPad" parent="JumpPads" instance=ExtResource( 5 )]
 position = Vector2( 1283.39, 418.184 )
 
+[node name="NPCs" type="Node" parent="."]
+
+[node name="Spikeman" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 1922.98, 115.966 )
+
+[node name="Spikeman2" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 513.415, -67.8902 )
+
+[node name="Spikeman3" parent="NPCs" instance=ExtResource( 9 )]
+position = Vector2( 1912.17, 570.201 )
+
 [node name="BGM" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 volume_db = -5.0
 autoplay = true
+
+[node name="GUI" parent="." instance=ExtResource( 7 )]
