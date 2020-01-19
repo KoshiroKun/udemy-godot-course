@@ -166,3 +166,7 @@ Godot offers a number of collision objects in 2D and 3D.
   - When you hit something, try and move along it
   - Can detect floors, walls and ceilings
   - Automatically uses `delta` when moving
+
+### Collision Layers
+
+### Collision Masks
